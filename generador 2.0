@@ -1,0 +1,31 @@
+import random
+import string
+
+def generar_contrasena():
+    # Pedir la longitud de la contraseña
+    longitud_total = int(input("Ingresa la longitud total de la contraseña: "))
+
+    # Pedir la cantidad de letras, números y símbolos
+    num_letras = int(input("Ingresa la cantidad de letras: "))
+    num_numeros = int(input("Ingresa la cantidad de números: "))
+    num_simbolos = int(input("Ingresa la cantidad de símbolos: "))
+
+    # Validar que las cantidades sumen correctamente
+    if num_letras + num_numeros + num_simbolos != longitud_total:
+        print("Error: La suma de letras, números y símbolos debe ser igual a la longitud total.")
+        return
+
+    # Generar los caracteres
+    letras = random.choices(string.ascii_letters, k=num_letras)
+    numeros = random.choices(string.digits, k=num_numeros)
+    simbolos = random.choices(string.punctuation, k=num_simbolos)
+
+    # Combinar y mezclar los caracteres
+    contrasena = letras + numeros + simbolos
+    random.shuffle(contrasena)
+
+    # Convertir la lista en una cadena y mostrarla
+    print("Tu contraseña generada es:", "".join(contrasena))
+
+# Ejecutar el generador de contraseñas
+generar_contrasena()
